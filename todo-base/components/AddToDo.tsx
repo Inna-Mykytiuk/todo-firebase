@@ -4,9 +4,11 @@ import React, { useState, useRef } from 'react';
 import { db } from '@/firebase/clientApp';
 import { collection, addDoc } from 'firebase/firestore';
 import useAuth from '@/hooks/useAuth';
-import TodoList from './TodoList';
+import { v4 as uuidv4 } from 'uuid';
+// import TodoList from './TodoList';
 
 type Todo = {
+  id: string;
   title: string;
   description: string;
   timestamp: number;
@@ -34,6 +36,7 @@ const AddTodoComponent = () => {
     const description = formData.get("description") as string;
 
     const newTodo: Todo = {
+      id: uuidv4(),
       title,
       description,
       timestamp: new Date().getTime(),
@@ -45,6 +48,7 @@ const AddTodoComponent = () => {
       const todoRef = collection(db, "users", user?.uid, "todos");
 
       await addDoc(todoRef, newTodo);
+
       setTodos((prevTodos) => [...prevTodos, newTodo]);
 
       // Очищення форми через референцію
@@ -98,7 +102,7 @@ const AddTodoComponent = () => {
           Add
         </button>
       </form>
-      {/* <div>
+      <div>
         <h2>Todo List</h2>
         {todos.length > 0 ? (
           <ul>
@@ -112,7 +116,7 @@ const AddTodoComponent = () => {
         ) : (
           <p>No tasks added yet!</p>
         )}
-      </div> */}
+      </div>
     </>
   );
 };

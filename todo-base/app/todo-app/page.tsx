@@ -1,6 +1,7 @@
 import React from 'react';
 import AddToDo from "../../components/AddToDo";
 import SignOutButton from '@/components/SignOutButton';
+// import ToDoList from '@/components/TodoList';
 
 const TodoAppComponent = () => {
   return (
@@ -8,6 +9,7 @@ const TodoAppComponent = () => {
       <SignOutButton />
       <h1>Welcome to my ToDo App</h1>
       <AddToDo />
+      {/* <ToDoList /> */}
     </div>
   )
 }
