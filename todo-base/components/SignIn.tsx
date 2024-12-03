@@ -2,7 +2,10 @@
 
 import React, { useState } from 'react'
 import { auth } from "../firebase/clientApp";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword, createUserWithEmailAndPassword,
+  // signOut
+} from 'firebase/auth';
 
 const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -56,9 +59,9 @@ const SignIn = () => {
           Sign Up
         </button>
         <p>{loading ? 'Signing in...' : ''}</p>
-        <button type="button" onClick={() => signOut(auth)}>
+        {/* <button type="button" onClick={() => signOut(auth)}>
           Sign Out
-        </button>
+        </button> */}
       </form>
     </div>
   );

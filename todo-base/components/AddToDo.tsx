@@ -1,26 +1,38 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { db } from '@/firebase/clientApp';
+import { collection, addDoc } from 'firebase/firestore';
+import useAuth from '@/hooks/useAuth';
+import TodoList from './TodoList';
 
 type Todo = {
-  title: string; // Назва завдання
-  description: string; // Опис завдання
-  timestamp: number; // Час створення
-  completed: boolean; // Стан виконання
+  title: string;
+  description: string;
+  timestamp: number;
+  completed: boolean;
 }
 
 const AddTodoComponent = () => {
 
   const [todos, setTodos] = useState<Todo[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [loading, setLoading] = useState<boolean>(false);
+  const user = useAuth();
+  const formRef = useRef<HTMLFormElement | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const title = formData.get('todo') as string; // Отримуємо значення інпута
-    const description = formData.get('description') as string; // Отримуємо значення текстового поля
+    if (!user) {
+      console.error("User is not authenticated.");
+      return;
+    }
 
-    // Створюємо новий об'єкт Todo
+    const formData = new FormData(e.currentTarget);
+    const title = formData.get("todo") as string;
+    const description = formData.get("description") as string;
+
     const newTodo: Todo = {
       title,
       description,
@@ -28,9 +40,22 @@ const AddTodoComponent = () => {
       completed: false,
     };
 
-    // Оновлюємо масив завдань
-    setTodos([...todos, newTodo]);
-    e.currentTarget.reset(); // Очищення форми
+    try {
+      setLoading(true);
+      const todoRef = collection(db, "users", user?.uid, "todos");
+
+      await addDoc(todoRef, newTodo);
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
+
+      // Очищення форми через референцію
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+    } catch (error) {
+      console.error("Error saving todo:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   console.log(todos);
@@ -38,7 +63,7 @@ const AddTodoComponent = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={formRef}>
         <div>
           <label htmlFor="todo-input" className="block text-sm font-medium text-gray-700">
             Task Title
@@ -73,13 +98,13 @@ const AddTodoComponent = () => {
           Add
         </button>
       </form>
-      <div>
+      {/* <div>
         <h2>Todo List</h2>
         {todos.length > 0 ? (
           <ul>
             {todos.map((todo, index) => (
               <li key={index}>
-                <h3> Title: {todo.title}</h3>
+                <h3 className='font-bold'>{todo.title}</h3>
                 <p>Description: {todo.description}</p>
               </li>
             ))}
@@ -87,7 +112,7 @@ const AddTodoComponent = () => {
         ) : (
           <p>No tasks added yet!</p>
         )}
-      </div>
+      </div> */}
     </>
   );
 };
