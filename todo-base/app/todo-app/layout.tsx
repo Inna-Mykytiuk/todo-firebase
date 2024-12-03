@@ -5,7 +5,7 @@ const TodoAppLayoutComponent = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   return isAuthenticated ? (
     <div>{children}</div>
