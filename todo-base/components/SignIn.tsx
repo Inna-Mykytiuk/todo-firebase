@@ -1,16 +1,50 @@
 "use client";
 
 import React, { useState } from 'react'
+import { auth } from "../firebase/clientApp";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 
 const SignIn = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [loading, setLoading] = useState(false);
-  const handleSignIn = () => {
-    // Handle sign-in logic here
+  const [loading, setLoading] = useState<boolean>(false);
+  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const email = e.currentTarget.email.value;
+    const password = e.currentTarget.password.value;
+    setLoading(true);
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        // const user = userCredential.user;
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   };
+
   const handleSignUp = () => {
-    // Handle sign-up logic here
+    const email = document.getElementsByName('email')[0] as HTMLInputElement;
+    const password = document.getElementsByName('password')[0] as HTMLInputElement;
+    setLoading(true);
+
+    createUserWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        console.log(user);
+        setLoading(false);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        setLoading(false);
+      });
   };
+
+
   return (
     <div className="flex justify-center">
       <form onSubmit={handleSignIn} className="grid grid-cols-1 gap-2 w-[250px] min-w-fit items-center justify-center">
@@ -22,6 +56,9 @@ const SignIn = () => {
           Sign Up
         </button>
         <p>{loading ? 'Signing in...' : ''}</p>
+        <button type="button" onClick={() => signOut(auth)}>
+          Sign Out
+        </button>
       </form>
     </div>
   );
