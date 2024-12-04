@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import useAuth from '@/hooks/useAuth';
 import { addToDo } from '@/actions/todoActions';
+import SubmitButton from './SubmitButton';
 
 
 const AddTodoComponent = () => {
@@ -50,12 +51,7 @@ const AddTodoComponent = () => {
         />
       </div>
 
-      <button
-        type="submit"
-        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        {loading ? 'Adding...' : 'Add'}
-      </button>
+      <SubmitButton loading={loading} />
     </form>
   );
 };
