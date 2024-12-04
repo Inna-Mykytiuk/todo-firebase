@@ -1,61 +1,28 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
-import { db } from '@/firebase/clientApp';
-import { collection, addDoc } from 'firebase/firestore';
+import React, { useState } from 'react';
 import useAuth from '@/hooks/useAuth';
-import { Todo } from '@/types/types';
+import { addToDo } from '@/actions/todoActions';
 
-// type Todo = {
-//   id?: string;
-//   title: string;
-//   description: string;
-//   timestamp: number;
-//   completed: boolean;
-// };
 
 const AddTodoComponent = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const user = useAuth();
-  const formRef = useRef<HTMLFormElement | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!user) {
-      console.error("User is not authenticated.");
-      return;
-    }
-
-    const formData = new FormData(e.currentTarget);
-    const title = formData.get("todo") as string;
-    const description = formData.get("description") as string;
-
-    const newTodo: Todo = {
-      title,
-      description,
-      timestamp: new Date().getTime(),
-      completed: false,
-    };
-
+  const handleSubmit = async (formData: FormData) => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const todoRef = collection(db, "users", user?.uid, "todos");
-      await addDoc(todoRef, newTodo);
-      if (formRef.current) {
-        formRef.current.reset();
-      }
+      const result = await addToDo(formData, user?.uid);
+      console.log(result.message);
     } catch (error) {
-      console.error("Error saving todo:", error);
+      console.error("Failed to add todo:", error);
     } finally {
       setLoading(false);
     }
   };
 
-
-
   return (
-    <form onSubmit={handleSubmit} ref={formRef}>
+    <form action={handleSubmit}>
       <div>
         <label htmlFor="todo-input" className="block text-sm font-medium text-gray-700">
           Task Title
