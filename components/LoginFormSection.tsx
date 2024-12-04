@@ -6,6 +6,7 @@ import { auth } from "@/firebase/clientApp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import SyncLoader from "react-spinners/SyncLoader";
 
 const LoginFormSection = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -68,7 +69,12 @@ const LoginFormSection = () => {
                 Sign Up
               </Link>
             </p>
-            <p>{loading ? "Loading..." : ""}</p>
+            {loading ? <div className="flex items-center justify-center h-full">
+              <SyncLoader
+                color="#9ea7fc"
+                size={25}
+              />
+            </div> : ""}
           </form>
         </div>
       </div>
