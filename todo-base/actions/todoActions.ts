@@ -125,10 +125,8 @@ export const updateStatus = async (
   todoId: string,
   status: boolean
 ) => {
-  if (!userId || !todoId || !status) {
-    throw new Error(
-      "User ID, Todo ID, field name, and new value are required."
-    );
+  if (!userId || !todoId) {
+    throw new Error("User ID and Todo ID are required.");
   }
 
   try {
@@ -137,11 +135,12 @@ export const updateStatus = async (
     const db = getFirestore(app);
     const todoRef = doc(db, "users", userId, "todos", todoId);
 
-    await updateDoc(todoRef, { complete: status });
+    // Виправлено: зміна поля "completed" замість "complete"
+    await updateDoc(todoRef, { completed: status });
 
-    return { success: true, message: `Well Done!` };
+    return { success: true, message: `Todo status updated successfully!` };
   } catch (error) {
-    console.error("Error updating todo:", error);
-    throw new Error("Failed to update todo. Please try again later.");
+    console.error("Error updating todo status:", error);
+    throw new Error("Failed to update todo status. Please try again later.");
   }
 };

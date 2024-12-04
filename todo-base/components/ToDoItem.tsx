@@ -19,20 +19,6 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
 
   const auth = useAuth();
 
-  // const handleCheckBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (!auth?.uid) {
-  //     console.error("User ID is undefined. Please ensure the user is authenticated.");
-  //     return;
-  //   }
-  //   const checked = e.target.checked;
-
-  //   try {
-  //     const docRef = doc(db, "users", auth?.uid, "todos", todo.id);
-  //     await updateDoc(docRef, { completed: checked });
-  //   } catch (error) {
-  //     console.error("Error updating document:", error);
-  //   }
-  // };
 
 
   return (
