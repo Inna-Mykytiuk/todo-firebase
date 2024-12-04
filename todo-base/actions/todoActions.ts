@@ -111,10 +111,35 @@ export const updateToDo = async (
     const db = getFirestore(app);
     const todoRef = doc(db, "users", userId, "todos", todoId);
 
-    // Оновлюємо конкретне поле (title або description)
     await updateDoc(todoRef, { [fieldName]: newValue });
 
     return { success: true, message: `Todo ${todoId} updated successfully.` };
+  } catch (error) {
+    console.error("Error updating todo:", error);
+    throw new Error("Failed to update todo. Please try again later.");
+  }
+};
+
+export const updateStatus = async (
+  userId: string,
+  todoId: string,
+  status: boolean
+) => {
+  if (!userId || !todoId || !status) {
+    throw new Error(
+      "User ID, Todo ID, field name, and new value are required."
+    );
+  }
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const app: any = await getApp();
+    const db = getFirestore(app);
+    const todoRef = doc(db, "users", userId, "todos", todoId);
+
+    await updateDoc(todoRef, { complete: status });
+
+    return { success: true, message: `Well Done!` };
   } catch (error) {
     console.error("Error updating todo:", error);
     throw new Error("Failed to update todo. Please try again later.");

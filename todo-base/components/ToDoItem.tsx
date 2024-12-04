@@ -2,9 +2,9 @@
 
 import React from 'react'
 import useAuth from '@/hooks/useAuth'
-import { doc, updateDoc } from 'firebase/firestore'
-import { db } from '../firebase/clientApp';
-import { deleteToDo, updateToDo } from '@/actions/todoActions';
+// import { doc, updateDoc } from 'firebase/firestore'
+// import { db } from '../firebase/clientApp';
+import { deleteToDo, updateToDo, updateStatus } from '@/actions/todoActions';
 
 
 type Todo = {
@@ -19,20 +19,20 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
 
   const auth = useAuth();
 
-  const handleCheckBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!auth?.uid) {
-      console.error("User ID is undefined. Please ensure the user is authenticated.");
-      return;
-    }
-    const checked = e.target.checked;
+  // const handleCheckBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (!auth?.uid) {
+  //     console.error("User ID is undefined. Please ensure the user is authenticated.");
+  //     return;
+  //   }
+  //   const checked = e.target.checked;
 
-    try {
-      const docRef = doc(db, "users", auth?.uid, "todos", todo.id);
-      await updateDoc(docRef, { completed: checked });
-    } catch (error) {
-      console.error("Error updating document:", error);
-    }
-  };
+  //   try {
+  //     const docRef = doc(db, "users", auth?.uid, "todos", todo.id);
+  //     await updateDoc(docRef, { completed: checked });
+  //   } catch (error) {
+  //     console.error("Error updating document:", error);
+  //   }
+  // };
 
 
   return (
@@ -40,7 +40,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
       <input
         type="checkbox"
         checked={todo.completed}
-        onChange={handleCheckBox}
+        onChange={(e) => updateStatus(auth?.uid ?? '', todo.id, e.target.checked)}
       />
       <input
         name="title"
