@@ -12,7 +12,6 @@ import {
 } from "firebase/firestore";
 
 type Todo = {
-  // id: string;
   title: string;
   description: string;
   timestamp: number;
@@ -29,6 +28,7 @@ function getApp() {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return new Promise((resolve, reject) => {
     try {
       //Initialize Firebase

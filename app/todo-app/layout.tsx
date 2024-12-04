@@ -1,7 +1,7 @@
 "use client";
 
-import SignIn from "@/components/SignIn";
 import useAuth from "@/hooks/useAuth";
+import Login from "../(auth)/login/page";
 
 const TodoAppLayoutComponent = ({
   children,
@@ -13,7 +13,7 @@ const TodoAppLayoutComponent = ({
   return isAuthenticated ? (
     <div>{children}</div>
   ) : (
-    <SignIn />
+    <Login />
   )
 };
 export default TodoAppLayoutComponent;
