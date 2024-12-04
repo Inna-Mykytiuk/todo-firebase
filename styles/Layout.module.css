@@ -1,11 +1,5 @@
-.imgStyle {
-  @apply bg-gradient-to-r from-[#bfd0eb] to-[#647894] rounded-tl-md rounded-bl-md;
-  position: relative;
-  overflow: hidden;
-}
-
 .cartoonImg {
-  background: url('/assets/img2.png') no-repeat;
+  background: url("/assets/img2.png") no-repeat;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -19,7 +13,7 @@
 }
 
 .cloud_one {
-  background: url('/assets/cloud5.png') no-repeat;
+  background: url("/assets/cloud5.png") no-repeat;
   position: absolute;
   top: 49%;
   left: 50%;
@@ -32,7 +26,7 @@
 }
 
 .cloud_two {
-  background: url('/assets/cloud5.png') no-repeat;
+  background: url("/assets/cloud5.png") no-repeat;
   position: absolute;
   top: 65%;
   left: 10%;
