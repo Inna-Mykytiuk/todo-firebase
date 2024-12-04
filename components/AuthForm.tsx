@@ -1,10 +1,10 @@
 import React from "react";
 
 interface AuthFormProps {
-  title: string; // Заголовок форми
-  buttonText: string; // Текст на кнопці
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void; // Обробник події
-  loading?: boolean; // Статус завантаження
+  title: string;
+  buttonText: string;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  loading?: boolean;
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({

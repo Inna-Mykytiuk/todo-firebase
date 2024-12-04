@@ -37,11 +37,9 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
                 disabled={todo.completed}
                 ariaLabel="Edit task title"
                 onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'title', value)}
-                className={`
-          ${todo.completed
-                    ? 'complete-todo w-full mb-4 text-lg font-bold'
-                    : 'incomplete-todo w-full mb-4 text-lg font-bold'}
-        `}
+                className={`${todo.completed
+                  ? 'complete-todo w-full mb-4 text-lg font-bold'
+                  : 'incomplete-todo w-full mb-4 text-lg font-bold'}`}
               />
               <InputField
                 name="description"
@@ -49,8 +47,9 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
                 disabled={todo.completed}
                 ariaLabel="Edit task description"
                 onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'description', value)}
-                className={`${todo.completed ? 'complete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base' : 'incomplete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base'
-                  }`}
+                className={`${todo.completed
+                  ? 'complete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base'
+                  : 'incomplete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base'}`}
                 isTextArea={true}
               />
             </div>

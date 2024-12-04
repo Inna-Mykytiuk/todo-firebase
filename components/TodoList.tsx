@@ -33,8 +33,6 @@ const ToDoList = () => {
     return () => unsubscribe();
   }, [auth?.uid]);
 
-  console.log(todos);
-
   return (
     <div className='w-full md:w-[450px] mt-10'>
       <h2 className='text-xl font-bold mb-4 text-center'>ToDo List</h2>

@@ -8,10 +8,7 @@ function useAuth() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       if (user) {
-        console.log("There is a user.");
         setLocalUser(user);
-      } else {
-        console.log("There is no user.");
       }
     });
 
