@@ -20,21 +20,18 @@ const ToDoList = () => {
   const auth = useAuth();
 
   useEffect(() => {
-    if (!auth) return;
+    if (!auth?.uid) return;
     const todosRef = collection(db, 'users', auth?.uid, 'todos');
     const unsubscribe = onSnapshot(todosRef, (snapshot) => {
-      if (!snapshot.empty) {
-        const todos: Todo[] = [];
-        snapshot.forEach((doc) => {
-          todos.push({ ...doc.data(), id: doc.id } as Todo);
-        });
-        setTodos(todos);
-      }
+      const todos: Todo[] = [];
+      snapshot.forEach((doc) => {
+        todos.push({ ...doc.data(), id: doc.id } as Todo);
+      });
+      setTodos(todos);
     });
 
     return () => unsubscribe();
-
-  }, [auth]);
+  }, [auth?.uid]);
 
   console.log(todos);
 

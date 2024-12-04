@@ -1,10 +1,10 @@
 "use client"
 
 import React from 'react'
-// import { Todo } from '@/types/types'
 import useAuth from '@/hooks/useAuth'
-import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
-import { db } from '../firebase/clientApp'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '../firebase/clientApp';
+import { deleteToDo, updateToDo } from '@/actions/todoActions';
 
 
 type Todo = {
@@ -35,40 +35,6 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
   };
 
 
-  const handleBlur = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!auth?.uid) {
-      console.error("User ID is undefined. Please ensure the user is authenticated.");
-      return;
-    }
-
-    const fieldName = e.target.name;
-    const newValue = e.target.value;
-
-    try {
-      const docRef = doc(db, "users", auth.uid, "todos", todo.id);
-      await updateDoc(docRef, { [fieldName]: newValue });
-      console.log(`Field "${fieldName}" updated to: ${newValue}`);
-    } catch (error) {
-      console.error("Error updating document:", error);
-    }
-  };
-
-
-  const handleDelete = async () => {
-    if (!auth?.uid) {
-      console.error("User ID is undefined. Please ensure the user is authenticated.");
-      return;
-    }
-
-    try {
-      const docRef = doc(db, "users", auth.uid, "todos", todo.id);
-      await deleteDoc(docRef);
-      console.log(`Todo ${todo.id} deleted successfully.`);
-    } catch (error) {
-      console.error("Error deleting document:", error);
-    }
-  };
-
   return (
     <li className="flex mx-1 hover:bg-slate-300">
       <input
@@ -78,7 +44,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
       />
       <input
         name="title"
-        onBlur={handleBlur}
+        onBlur={(e) => updateToDo(auth?.uid ?? '', todo.id, 'title', e.target.value)}
         type="text"
         defaultValue={todo.title}
         disabled={todo.completed}
@@ -89,7 +55,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
       />
       <input
         name="description"
-        onBlur={handleBlur}
+        onBlur={(e) => updateToDo(auth?.uid ?? '', todo.id, 'description', e.target.value)}
         type="text"
         defaultValue={todo.description}
         disabled={todo.completed}
@@ -98,7 +64,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
             'border-0 ml-3 focus:border-t-0 focus:border-r-0 focus:border-l-0 focus:border-b-2 focus:outline-none focus:ring-0 rounded-none hover:bg-slate-300'}
       `}
       />
-      <button onClick={handleDelete}>x</button>
+      <button onClick={() => deleteToDo(auth?.uid ?? '', todo.id)}>x</button>
 
     </li>
   )

@@ -49,7 +49,7 @@ export const addToDo = async (formData: FormData, userId?: string) => {
   const title = formData.get("todo") as string;
   const description = formData.get("description") as string;
 
-  if (!title || !description) {
+  if (!title) {
     throw new Error("Both title and description are required.");
   }
 
@@ -72,5 +72,51 @@ export const addToDo = async (formData: FormData, userId?: string) => {
   } catch (error) {
     console.error("Error adding todo:", error);
     throw new Error("Failed to add todo. Please try again later.");
+  }
+};
+
+export const deleteToDo = async (userId: string, todoId: string) => {
+  if (!userId || !todoId) {
+    throw new Error("User ID and Todo ID are required.");
+  }
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const app: any = await getApp();
+    const db = getFirestore(app);
+    const todoRef = doc(db, "users", userId, "todos", todoId);
+    await deleteDoc(todoRef);
+    return { success: true, message: `Todo ${todoId} deleted successfully.` };
+  } catch (error) {
+    console.error("Error deleting todo:", error);
+    throw new Error("Failed to delete todo. Please try again later.");
+  }
+};
+
+export const updateToDo = async (
+  userId: string,
+  todoId: string,
+  fieldName: string,
+  newValue: string
+) => {
+  if (!userId || !todoId || !fieldName || !newValue) {
+    throw new Error(
+      "User ID, Todo ID, field name, and new value are required."
+    );
+  }
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const app: any = await getApp();
+    const db = getFirestore(app);
+    const todoRef = doc(db, "users", userId, "todos", todoId);
+
+    // Оновлюємо конкретне поле (title або description)
+    await updateDoc(todoRef, { [fieldName]: newValue });
+
+    return { success: true, message: `Todo ${todoId} updated successfully.` };
+  } catch (error) {
+    console.error("Error updating todo:", error);
+    throw new Error("Failed to update todo. Please try again later.");
   }
 };
