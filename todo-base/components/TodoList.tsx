@@ -39,7 +39,7 @@ const ToDoList = () => {
     <div>
       <h1>ToDo List</h1>
       {todos.length > 0 ? (
-        <ul>
+        <ul className='w-full flex flex-col gap-4'>
           {todos.map((todo) => (
             <ToDoItem key={todo.id} todo={todo} />
           ))}
