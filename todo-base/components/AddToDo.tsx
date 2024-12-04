@@ -4,13 +4,15 @@ import React, { useState, useRef } from 'react';
 import { db } from '@/firebase/clientApp';
 import { collection, addDoc } from 'firebase/firestore';
 import useAuth from '@/hooks/useAuth';
+import { Todo } from '@/types/types';
 
-type Todo = {
-  title: string;
-  description: string;
-  timestamp: number;
-  completed: boolean;
-};
+// type Todo = {
+//   id?: string;
+//   title: string;
+//   description: string;
+//   timestamp: number;
+//   completed: boolean;
+// };
 
 const AddTodoComponent = () => {
   const [loading, setLoading] = useState<boolean>(false);

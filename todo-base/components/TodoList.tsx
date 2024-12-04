@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase/clientApp';
+
 import useAuth from '@/hooks/useAuth';
+import ToDoItem from './ToDoItem';
 
 type Todo = {
   id: string;
@@ -34,7 +36,7 @@ const ToDoList = () => {
 
   }, [auth]);
 
-  // console.log(todos);
+  console.log(todos);
 
   return (
     <div>
@@ -42,10 +44,7 @@ const ToDoList = () => {
       {todos.length > 0 ? (
         <ul>
           {todos.map((todo) => (
-            <li key={todo.id}>
-              <h2>{todo.title}</h2>
-              <p>{todo.description}</p>
-            </li>
+            <ToDoItem key={todo.id} todo={todo} />
           ))}
         </ul>
       ) : (
