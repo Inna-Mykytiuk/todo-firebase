@@ -23,7 +23,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
     <li className="card-wrapper backlog-color">
       <div className='felx flex-col p-4'>
         <p className='text-xs font-bold mb-4'>{new Date(todo.timestamp).toLocaleString()}</p>
-        <div className="flex items-center">
+        <div className="flex">
           <Checkbox
             checked={todo.completed}
             ariaLabel="Mark as completed"
@@ -39,8 +39,8 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
                 onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'title', value)}
                 className={`
           ${todo.completed
-                    ? 'complete-todo'
-                    : 'incomplete-todo w-full mb-2 text-lg font-bold'}
+                    ? 'complete-todo w-full mb-4 text-lg font-bold'
+                    : 'incomplete-todo w-full mb-4 text-lg font-bold'}
         `}
               />
               <InputField
@@ -49,7 +49,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
                 disabled={todo.completed}
                 ariaLabel="Edit task description"
                 onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'description', value)}
-                className={`${todo.completed ? 'complete-todo' : 'incomplete-todo w-full resize-none min-h-[48px] h-[120px] overflow-ellipsis text-base'
+                className={`${todo.completed ? 'complete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base' : 'incomplete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base'
                   }`}
                 isTextArea={true}
               />
@@ -57,9 +57,9 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
             <button
               type="button"
               aria-label='Delete task button'
-              className='rounded-md hover:scale-x-95 transition-all duration-300 ease-in-out'
+              className='rounded-md hover:scale-x-95 transition-all duration-300 ease-in-out flex'
               onClick={() => deleteToDo(auth?.uid ?? '', todo.id)}>
-              <MdDeleteForever className='h-[32px] w-[32px] text-red-600 text-xl' />
+              <MdDeleteForever className='h-[32px] w-[32px] text-red-600 text-xl  mb-2' />
             </button>
           </div>
         </div>

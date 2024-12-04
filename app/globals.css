@@ -41,3 +41,12 @@ textarea::-webkit-scrollbar-thumb {
   background: white;
   border-radius: 5px;
 }
+
+.border-red-500 {
+  border-radius: 6px;
+  border: 1px solid #f87171; /* Червоний колір */
+}
+
+.text-red-500 {
+  color: #f87171;
+}
