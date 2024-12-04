@@ -5,6 +5,7 @@ type InputProps = {
   ariaLabel: string;
   onBlur: (value: string) => void;
   className?: string;
+  isTextArea?: boolean;
 };
 
 const InputField: React.FC<InputProps> = ({
@@ -14,8 +15,18 @@ const InputField: React.FC<InputProps> = ({
   ariaLabel,
   onBlur,
   className = '',
+  isTextArea = false,
 }) => {
-  return (
+  return isTextArea ? (
+    <textarea
+      name={name}
+      defaultValue={defaultValue}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      onBlur={(e) => onBlur(e.target.value)}
+      className={className}
+    />
+  ) : (
     <input
       name={name}
       type="text"
@@ -29,3 +40,4 @@ const InputField: React.FC<InputProps> = ({
 };
 
 export default InputField;
+

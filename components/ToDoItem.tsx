@@ -5,6 +5,7 @@ import useAuth from '@/hooks/useAuth'
 import { deleteToDo, updateToDo, updateStatus } from '@/actions/todoActions';
 import Checkbox from './Checkbox';
 import InputField from './InputField';
+import { MdDeleteForever } from "react-icons/md";
 
 type Todo = {
   id: string;
@@ -19,46 +20,49 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
   const auth = useAuth();
 
   return (
-    <li className='shadow-md p-2'>
-      <p className='text-xs'>{new Date(todo.timestamp).toLocaleString()}</p>
-      <div className="flex hover:bg-slate-300">
-        <Checkbox
-          checked={todo.completed}
-          ariaLabel="Mark as completed"
-          onChange={(checked) => updateStatus(auth?.uid ?? '', todo.id, checked)}
-        />
-        <div className='flex flex-col'>
-          <InputField
-            name="title"
-            defaultValue={todo.title}
-            disabled={todo.completed}
-            ariaLabel="Edit task title"
-            onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'title', value)}
-            className={`
-          ${todo.completed
-                ? 'complete-todo'
-                : 'incomplete-todo'}
-        `}
+    <li className="card-wrapper backlog-color">
+      <div className='felx flex-col p-4'>
+        <p className='text-xs font-bold mb-4'>{new Date(todo.timestamp).toLocaleString()}</p>
+        <div className="flex items-center">
+          <Checkbox
+            checked={todo.completed}
+            ariaLabel="Mark as completed"
+            onChange={(checked) => updateStatus(auth?.uid ?? '', todo.id, checked)}
           />
-          <InputField
-            name="description"
-            defaultValue={todo.description}
-            disabled={todo.completed}
-            ariaLabel="Edit task description"
-            onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'description', value)}
-            className={`
+          <div className='flex justify-between w-full'>
+            <div className='flex flex-col w-full mr-4'>
+              <InputField
+                name="title"
+                defaultValue={todo.title}
+                disabled={todo.completed}
+                ariaLabel="Edit task title"
+                onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'title', value)}
+                className={`
           ${todo.completed
-                ? 'complete-todo'
-                : 'incomplete-todo'}
+                    ? 'complete-todo'
+                    : 'incomplete-todo w-full mb-2 text-lg font-bold'}
         `}
-          />
+              />
+              <InputField
+                name="description"
+                defaultValue={todo.description}
+                disabled={todo.completed}
+                ariaLabel="Edit task description"
+                onBlur={(value) => updateToDo(auth?.uid ?? '', todo.id, 'description', value)}
+                className={`${todo.completed ? 'complete-todo' : 'incomplete-todo w-full resize-none min-h-[48px] h-[120px] overflow-ellipsis text-base'
+                  }`}
+                isTextArea={true}
+              />
+            </div>
+            <button
+              type="button"
+              aria-label='Delete task button'
+              className='rounded-md hover:scale-x-95 transition-all duration-300 ease-in-out'
+              onClick={() => deleteToDo(auth?.uid ?? '', todo.id)}>
+              <MdDeleteForever className='h-[32px] w-[32px] text-red-600 text-xl' />
+            </button>
+          </div>
         </div>
-        <button
-          type="button"
-          className='bg-red-600 text-white text-sm px-4 rounded-md hover:bg-red-700 transition-all duration-300 ease-in-out'
-          onClick={() => deleteToDo(auth?.uid ?? '', todo.id)}>
-          Delete
-        </button>
       </div>
     </li>
   )

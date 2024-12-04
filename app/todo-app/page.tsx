@@ -5,12 +5,18 @@ import ToDoList from '@/components/TodoList';
 
 const TodoAppComponent = () => {
   return (
-    <div className='flex flex-col justify-center items-center pt-16 w-full'>
-      <SignOutButton />
-      <h1>Welcome to my ToDo App</h1>
-      <AddToDo />
-      <ToDoList />
-    </div>
+    <section className='h-screen pyt-[100px] '>
+      <div className="w-full bg-gradient py-[20px] shadow-lg flex justify-center">
+        <SignOutButton />
+      </div>
+      <div className='container'>
+        <div className='flex flex-col justify-center items-center w-full mt-[40px]'>
+          <h1 className='text-xl font-bold mb-4'>Create New ToDo</h1>
+          <AddToDo />
+          <ToDoList />
+        </div>
+      </div>
+    </section>
   )
 }
 

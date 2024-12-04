@@ -36,8 +36,8 @@ const ToDoList = () => {
   console.log(todos);
 
   return (
-    <div>
-      <h1>ToDo List</h1>
+    <div className='w-full md:w-[450px] mt-10'>
+      <h2 className='text-xl font-bold mb-4 text-center'>ToDo List</h2>
       {todos.length > 0 ? (
         <ul className='w-full flex flex-col gap-4'>
           {todos.map((todo) => (

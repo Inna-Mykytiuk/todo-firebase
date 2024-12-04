@@ -23,7 +23,7 @@ const Login = () => {
       .then(() => {
         notifySuccess("Successfully logged in!");
         setLoading(false);
-        window.location.href = "/todo-app"; // Перенаправлення на сторінку завдань
+        window.location.href = "/todo-app";
       })
       .catch(() => {
         notifyError("User not registered. Please sign up first.");

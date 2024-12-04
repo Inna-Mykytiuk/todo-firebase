@@ -3,9 +3,41 @@
 @tailwind utilities;
 
 .complete-todo {
-  @apply flex-1 border-0 ml-3 focus:border-0 focus:outline-none focus:ring-0 rounded-none line-through disabled:bg-inherit;
+  @apply flex-1 border-0 ml-3 focus:border-0 focus:outline-none focus:ring-0 rounded-none line-through disabled:bg-inherit bg-transparent;
 }
 
 .incomplete-todo {
-  @apply flex-1 border-0 ml-3 focus:border-t-0 focus:border-r-0 focus:border-l-0 focus:border-b-2 focus:outline-none focus:ring-0 rounded-none;
+  @apply flex-1 border-0 ml-3 focus:border-t-0 focus:border-r-0 focus:border-l-0 focus:border-b-2 focus:outline-none focus:ring-0 rounded-none bg-transparent;
+}
+
+.card-wrapper {
+  width: 100%;
+  box-shadow: 0px 0px 10px 0px #d2d7e0;
+  height: 100%;
+  border-top: double 4px transparent;
+  border-radius: 5px;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100px; /* Мінімальна висота картки */
+  transition: height 0.3s ease;
+}
+
+.backlog-color {
+  background-image: linear-gradient(#f6f8fc, #f6f8fc),
+    radial-gradient(circle at top left, #c781ff, #e57373);
+}
+
+textarea::-webkit-scrollbar {
+  appearance: none;
+  background: var(--text-black);
+  width: 5px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 5px;
 }

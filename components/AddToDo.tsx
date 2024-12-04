@@ -23,31 +23,28 @@ const AddTodoComponent = () => {
   };
 
   return (
-    <form action={handleSubmit}>
+    <form action={handleSubmit} className='flex flex-col w-full md:w-[450px]'>
       <div>
-        <label htmlFor="todo-input" className="block text-sm font-medium text-gray-700">
-          Task Title
-        </label>
         <input
           type="text"
           id="todo-input"
           name="todo"
           placeholder="Add To Do..."
+          aria-label='Add To Do...'
           required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none"
         />
       </div>
 
       <div className="mt-4">
-        <label htmlFor="todo-description" className="block text-sm font-medium text-gray-700">
-          Task Description
-        </label>
         <textarea
           id="todo-description"
           name="description"
           placeholder="Add task description..."
+          aria-label='Add task description...'
           rows={4}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          required
+          className="h-[100px] w-full resize-none overflow-auto rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none"
         />
       </div>
 
