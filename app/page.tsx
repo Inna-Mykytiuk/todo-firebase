@@ -4,16 +4,13 @@ import ImageSection from "@/components/ImageSection";
 export default function Home() {
   return (
     <main className="section">
-      <section className=" bg-slate-50 rounded-md w-4/5 sm:w-3/5 sm:h-3/4 sm:grid sm:grid-cols-2 h-">
+      <section className=" bg-slate-50 rounded-md w-4/5 sm:w-3/5 sm:h-3/4 sm:grid lg:grid-cols-2 h-">
         <ImageSection />
-        <div className="mx-auto text-center py-16 lg:py-20 h-full justify-between flex flex-col gap-6">
+        <div className="mx-4 lg:mx-20 text-center py-12 lg:py-20 h-full justify-center flex flex-col gap-6">
           <h1 className="text-4xl font-bold flex items-center justify-center">Welcome to my ToDo App</h1>
           <div>
             <p>
-              Welcome to our community of wanderers! We&apos;re thrilled to have you
-              here. Soon, you&apos;ll have the opportunity to discover more about
-              exciting journeys and the experiences of our participants. Inspiration
-              awaits you around every corner!
+              Your daily companion for staying organized and productive! Effortlessly add, track, and manage your tasks for each day, ensuring nothing important is ever missed. Make every day a success with our simple and intuitive task manager!
             </p>
             <p className="hidden md:display-flex">
               If you&apos;re ready to embark on your adventure, press the
