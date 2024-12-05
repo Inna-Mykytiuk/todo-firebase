@@ -8,11 +8,13 @@
     "React": true
   },
   "extends": [
-    // "airbnb",
     "prettier",
     "next/typescript",
     "eslint:recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest-dom/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
