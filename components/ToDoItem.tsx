@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import { deleteToDo, updateStatus, updateToDo } from "@/actions/todoActions";
 import useAuth from "@/hooks/useAuth";
-import { deleteToDo, updateToDo, updateStatus } from "@/actions/todoActions";
+import React from "react";
+import { MdDeleteForever } from "react-icons/md";
+
 import Checkbox from "./Checkbox";
 import InputField from "./InputField";
-import { MdDeleteForever } from "react-icons/md";
 
 type Todo = {
   id: string;

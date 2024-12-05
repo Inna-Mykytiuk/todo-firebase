@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import useAuth from "@/hooks/useAuth";
-import Login from "../(auth)/login/page";
+import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
+
+import Login from "../(auth)/login/page";
 
 const TodoAppLayoutComponent = ({
   children,

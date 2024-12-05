@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@firebase/firestore": "^4.7.5",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "firebase": "^11.0.2",
     "next": "15.0.3",

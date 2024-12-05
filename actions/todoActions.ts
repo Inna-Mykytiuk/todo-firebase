@@ -1,13 +1,12 @@
 "use server";
 
 import { initializeApp } from "firebase/app";
-
 import {
-  collection,
-  getFirestore,
-  doc,
   addDoc,
+  collection,
   deleteDoc,
+  doc,
+  getFirestore,
   updateDoc,
 } from "firebase/firestore";
 

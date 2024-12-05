@@ -1,5 +1,5 @@
-import Link from "next/link";
 import ImageSection from "@/components/ImageSection";
+import Link from "next/link";
 
 export default function Home() {
   return (

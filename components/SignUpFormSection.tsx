@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/clientApp";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
+import React, { useRef, useState } from "react";
+import SyncLoader from "react-spinners/SyncLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Link from "next/link";
-import SyncLoader from "react-spinners/SyncLoader";
 
 const SignUpFormSection = () => {
   const [loading, setLoading] = useState<boolean>(false);

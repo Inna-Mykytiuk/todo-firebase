@@ -1,7 +1,8 @@
-import React from "react";
-import AddToDo from "../../components/AddToDo";
 import SignOutButton from "@/components/SignOutButton";
 import ToDoList from "@/components/TodoList";
+import React from "react";
+
+import AddToDo from "../../components/AddToDo";
 
 const TodoAppComponent = () => {
   return (

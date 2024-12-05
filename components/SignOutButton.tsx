@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
-import { auth } from "../firebase/clientApp";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import React from "react";
 import { IoIosLogOut } from "react-icons/io";
+
+import { auth } from "../firebase/clientApp";
 
 const SignOutButton = () => {
   const router = useRouter();

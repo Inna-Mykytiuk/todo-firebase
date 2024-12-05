@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins, Sora } from "next/font/google";
-import "./globals.css";
+
 import meta from "../data/meta.json";
+import "./globals.css";
 
 const NEXT_PUBLIC_URL = "http://localhost:3000/";
 

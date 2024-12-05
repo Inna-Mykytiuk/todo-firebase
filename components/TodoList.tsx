@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase/clientApp";
-
 import useAuth from "@/hooks/useAuth";
+import { collection, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react";
+
+import { db } from "../firebase/clientApp";
 import ToDoItem from "./ToDoItem";
 
 type Todo = {

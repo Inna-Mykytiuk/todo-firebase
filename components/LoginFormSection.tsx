@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/clientApp";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
+import React, { useState } from "react";
+import SyncLoader from "react-spinners/SyncLoader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Link from "next/link";
-import SyncLoader from "react-spinners/SyncLoader";
 
 const LoginFormSection = () => {
   const [loading, setLoading] = useState<boolean>(false);

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import useAuth from "@/hooks/useAuth";
 import { addToDo } from "@/actions/todoActions";
+import useAuth from "@/hooks/useAuth";
+import React, { useState } from "react";
+
 import SubmitButton from "./SubmitButton";
 
 const AddTodoComponent = () => {
