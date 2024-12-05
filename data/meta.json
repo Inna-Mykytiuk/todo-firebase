@@ -1,0 +1,36 @@
+{
+  "title": "ToDo App",
+  "description": "Your daily companion for staying organized and productive! Effortlessly add, track, and manage your tasks for each day, ensuring nothing important is ever missed.",
+  "keywords": "To do, manager, daily, schedule",
+  "icons": [
+    {
+      "url": "/meta/favicon.ico"
+    },
+    {
+      "url": "/meta/favicon-16x16.png",
+      "rel": "icon",
+      "type": "image/png"
+    },
+    {
+      "url": "/meta/favicon-32x32.png",
+      "rel": "icon",
+      "type": "image/png"
+    }
+  ],
+  "manifest": "/meta/site.webmanifest",
+  "openGraph": {
+    "type": "website",
+    "title": "ToDo App",
+    "description": "Your daily companion for staying organized and productive! Effortlessly add, track, and manage your tasks for each day, ensuring nothing important is ever missed.",
+    "keywords": "To do, manager, daily, schedule",
+    "siteName": "ToDo App",
+    "images": [
+      {
+        "url": "/presentation.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "ToDo"
+      }
+    ]
+  }
+}
