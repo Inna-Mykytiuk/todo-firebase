@@ -21,7 +21,7 @@ const TodoAppLayoutComponent = ({
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <SyncLoader color="#9ea7fc" size={25} />
       </div>
     );

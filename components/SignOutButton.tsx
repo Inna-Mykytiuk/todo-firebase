@@ -18,10 +18,10 @@ const SignOutButton = () => {
     <button
       type="button"
       onClick={handleSignOut}
-      className=" flex gap-4 items-center text-center text-2xl text-white font-bold"
+      className="flex items-center gap-4 text-center text-2xl font-bold text-white"
     >
       Sign Out
-      <IoIosLogOut className="h-[32px] w-[32px] text-bold" />
+      <IoIosLogOut className="text-bold h-[32px] w-[32px]" />
     </button>
   );
 };

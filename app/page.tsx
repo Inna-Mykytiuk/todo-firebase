@@ -3,11 +3,11 @@ import ImageSection from "@/components/ImageSection";
 
 export default function Home() {
   return (
-    <main className="section w-full h-screen flex justify-center items-center bg-sectionBcg">
-      <section className=" bg-slate-50 rounded-md w-4/5 sm:w-3/5 sm:h-3/4 sm:grid xl:grid-cols-2 h-">
+    <main className="section flex h-screen w-full items-center justify-center bg-sectionBcg">
+      <section className="h- w-4/5 rounded-md bg-slate-50 sm:grid sm:h-3/4 sm:w-3/5 xl:grid-cols-2">
         <ImageSection />
-        <div className="mx-4 xl:mx-20 text-center py-12 xl:py-20 h-full justify-center flex flex-col gap-6">
-          <h1 className="text-4xl font-bold flex items-center justify-center">
+        <div className="mx-4 flex h-full flex-col justify-center gap-6 py-12 text-center xl:mx-20 xl:py-20">
+          <h1 className="flex items-center justify-center text-4xl font-bold">
             Welcome to my ToDo App
           </h1>
           <div>
@@ -17,7 +17,7 @@ export default function Home() {
               ensuring nothing important is ever missed. Make every day a
               success with our simple and intuitive task manager!
             </p>
-            <p className="hidden md:display-flex">
+            <p className="md:display-flex hidden">
               If you&apos;re ready to embark on your adventure, press the
               &quot;Explore&quot; button below and immerse yourself in the world
               of impressions and possibilities.
@@ -25,7 +25,7 @@ export default function Home() {
           </div>
           <Link
             href="/login"
-            className="mx-auto mt-4 flex  justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor"
+            className="mx-auto mt-4 flex justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor"
           >
             Get Started
           </Link>

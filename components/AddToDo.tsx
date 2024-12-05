@@ -22,7 +22,7 @@ const AddTodoComponent = () => {
   };
 
   return (
-    <form action={handleSubmit} className="flex flex-col w-full md:w-[450px]">
+    <form action={handleSubmit} className="flex w-full flex-col md:w-[450px]">
       <input
         type="text"
         id="todo-input"
@@ -39,7 +39,7 @@ const AddTodoComponent = () => {
         aria-label="Add task description..."
         rows={4}
         required
-        className="h-[100px] w-full resize-none overflow-auto rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none mt-4"
+        className="mt-4 h-[100px] w-full resize-none overflow-auto rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none"
       />
       <SubmitButton loading={loading} />
     </form>

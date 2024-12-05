@@ -1,6 +1,6 @@
 const ImageSection = () => {
   return (
-    <div className="hidden xl:block relative overflow-hidden bg-gradient-to-r from-[#bfd0eb] to-[#647894] rounded-tl-md rounded-bl-md">
+    <div className="relative hidden overflow-hidden rounded-bl-md rounded-tl-md bg-gradient-to-r from-[#bfd0eb] to-[#647894] xl:block">
       <div className="cartoonImg"></div>
       <div className="cloudOne"></div>
       <div className="cloudTwo"></div>

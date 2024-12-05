@@ -15,7 +15,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       checked={checked}
       aria-label={ariaLabel}
       onChange={(e) => onChange(e.target.checked)}
-      className="h-[22px] w-[22px] flex items-center justify-center mt-1 cursor-pointer"
+      className="mt-1 flex h-[22px] w-[22px] cursor-pointer items-center justify-center"
     />
   );
 };

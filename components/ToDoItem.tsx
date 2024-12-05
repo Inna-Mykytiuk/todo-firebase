@@ -21,7 +21,7 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
   return (
     <li className="card-wrapper backlog-color">
       <div className="felx flex-col p-4">
-        <p className="text-xs font-bold mb-4">
+        <p className="mb-4 text-xs font-bold">
           {new Date(todo.timestamp).toLocaleString()}
         </p>
         <div className="flex">
@@ -32,8 +32,8 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
               updateStatus(auth?.uid ?? "", todo.id, checked)
             }
           />
-          <div className="flex justify-between w-full">
-            <div className="flex flex-col w-full mr-4">
+          <div className="flex w-full justify-between">
+            <div className="mr-4 flex w-full flex-col">
               <InputField
                 name="title"
                 defaultValue={todo.title}
@@ -44,8 +44,8 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
                 }
                 className={`${
                   todo.completed
-                    ? "complete-todo w-full mb-4 text-lg font-bold"
-                    : "incomplete-todo w-full mb-4 text-lg font-bold"
+                    ? "complete-todo mb-4 w-full text-lg font-bold"
+                    : "incomplete-todo mb-4 w-full text-lg font-bold"
                 }`}
               />
               <InputField
@@ -58,8 +58,8 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
                 }
                 className={`${
                   todo.completed
-                    ? "complete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base"
-                    : "incomplete-todo w-full resize-none min-h-[48px] overflow-ellipsis text-base"
+                    ? "complete-todo min-h-[48px] w-full resize-none overflow-ellipsis text-base"
+                    : "incomplete-todo min-h-[48px] w-full resize-none overflow-ellipsis text-base"
                 }`}
                 isTextArea={true}
               />
@@ -67,10 +67,10 @@ const ToDoItem = ({ todo }: { todo: Todo }) => {
             <button
               type="button"
               aria-label="Delete task button"
-              className="rounded-md hover:scale-x-95 transition-all duration-300 ease-in-out flex"
+              className="flex rounded-md transition-all duration-300 ease-in-out hover:scale-x-95"
               onClick={() => deleteToDo(auth?.uid ?? "", todo.id)}
             >
-              <MdDeleteForever className="h-[32px] w-[32px] text-red-600 text-xl  mb-2" />
+              <MdDeleteForever className="mb-2 h-[32px] w-[32px] text-xl text-red-600" />
             </button>
           </div>
         </div>

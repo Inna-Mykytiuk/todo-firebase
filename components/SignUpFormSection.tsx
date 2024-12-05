@@ -51,15 +51,15 @@ const SignUpFormSection = () => {
   };
 
   return (
-    <section className="h-screen flex pt-[100px]">
+    <section className="flex h-screen pt-[100px]">
       <div className="container">
         <div className="flex justify-center">
           <ToastContainer position="top-right" autoClose={3000} />
           <form
             onSubmit={handleSignUp}
-            className="grid grid-cols-1 gap-2 w-[250px] min-w-fit items-center justify-center"
+            className="grid w-[250px] min-w-fit grid-cols-1 items-center justify-center gap-2"
           >
-            <h1 className="text-xl font-bold mb-4 text-center">Sign Up</h1>
+            <h1 className="mb-4 text-center text-xl font-bold">Sign Up</h1>
             <input
               ref={emailRef}
               type="email"
@@ -82,7 +82,7 @@ const SignUpFormSection = () => {
             />
             <button
               type="submit"
-              className="mx-auto mt-4 flex  justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor"
+              className="mx-auto mt-4 flex justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor"
             >
               Sign Up
             </button>
@@ -93,7 +93,7 @@ const SignUpFormSection = () => {
               </Link>
             </p>
             {loading ? (
-              <div className="flex items-center justify-center h-full">
+              <div className="flex h-full items-center justify-center">
                 <SyncLoader color="#9ea7fc" size={25} />
               </div>
             ) : (
