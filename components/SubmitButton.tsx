@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { useFormStatus } from 'react-dom';
+import React from "react";
+import { useFormStatus } from "react-dom";
 
 interface SubmitButtonProps {
   loading: boolean;
@@ -18,7 +18,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ loading }) => {
     >
       {loading ? "Adding..." : "Add"}
     </button>
-  )
-}
+  );
+};
 
-export default SubmitButton
+export default SubmitButton;

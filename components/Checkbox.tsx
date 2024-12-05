@@ -4,7 +4,11 @@ type CheckboxProps = {
   onChange: (checked: boolean) => void;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ checked, ariaLabel, onChange }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+  checked,
+  ariaLabel,
+  onChange,
+}) => {
   return (
     <input
       type="checkbox"

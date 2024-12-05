@@ -13,7 +13,6 @@ const TodoAppLayoutComponent = ({
   const isAuthenticated = useAuth();
   const [isLoading, setIsLoading] = useState(true);
 
-
   useEffect(() => {
     if (isAuthenticated !== null) {
       setIsLoading(false);
@@ -23,19 +22,11 @@ const TodoAppLayoutComponent = ({
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <SyncLoader
-          color="#9ea7fc"
-          size={25}
-        />
+        <SyncLoader color="#9ea7fc" size={25} />
       </div>
     );
   }
 
-  return isAuthenticated ? (
-    <div>{children}</div>
-  ) : (
-    <Login />
-
-  )
+  return isAuthenticated ? <div>{children}</div> : <Login />;
 };
 export default TodoAppLayoutComponent;

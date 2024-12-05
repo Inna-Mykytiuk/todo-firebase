@@ -41,7 +41,7 @@ const LoginFormSection = () => {
             onSubmit={handleSignIn}
             className="grid grid-cols-1 gap-2 w-[250px] min-w-fit items-center justify-center"
           >
-            <h1 className='text-xl font-bold mb-4 text-center'>Login</h1>
+            <h1 className="text-xl font-bold mb-4 text-center">Login</h1>
             <input
               type="email"
               name="email"
@@ -49,7 +49,8 @@ const LoginFormSection = () => {
               required
               aria-label="Email"
               autoComplete="off"
-              className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none" />
+              className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none"
+            />
             <input
               type="password"
               name="password"
@@ -57,10 +58,12 @@ const LoginFormSection = () => {
               required
               aria-label="Password"
               autoComplete="off"
-              className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none" />
+              className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none"
+            />
             <button
               type="submit"
-              className="mx-auto mt-4 flex  justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor">
+              className="mx-auto mt-4 flex  justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor"
+            >
               Login
             </button>
             <p>
@@ -69,12 +72,13 @@ const LoginFormSection = () => {
                 Sign Up
               </Link>
             </p>
-            {loading ? <div className="flex items-center justify-center h-full">
-              <SyncLoader
-                color="#9ea7fc"
-                size={25}
-              />
-            </div> : ""}
+            {loading ? (
+              <div className="flex items-center justify-center h-full">
+                <SyncLoader color="#9ea7fc" size={25} />
+              </div>
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </div>

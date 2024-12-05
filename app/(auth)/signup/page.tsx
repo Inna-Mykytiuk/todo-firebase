@@ -1,10 +1,7 @@
 import SignUpFormSection from "@/components/SignUpFormSection";
 
 const SignUp = () => {
-
-  return (
-    <SignUpFormSection />
-  );
+  return <SignUpFormSection />;
 };
 
 export default SignUp;

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from '../firebase/clientApp';
+import { useState, useEffect } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase/clientApp";
 
-import useAuth from '@/hooks/useAuth';
-import ToDoItem from './ToDoItem';
+import useAuth from "@/hooks/useAuth";
+import ToDoItem from "./ToDoItem";
 
 type Todo = {
   id: string;
@@ -21,7 +21,7 @@ const ToDoList = () => {
 
   useEffect(() => {
     if (!auth?.uid) return;
-    const todosRef = collection(db, 'users', auth?.uid, 'todos');
+    const todosRef = collection(db, "users", auth?.uid, "todos");
     const unsubscribe = onSnapshot(todosRef, (snapshot) => {
       const todos: Todo[] = [];
       snapshot.forEach((doc) => {
@@ -34,10 +34,10 @@ const ToDoList = () => {
   }, [auth?.uid]);
 
   return (
-    <div className='w-full md:w-[450px] mt-10'>
-      <h2 className='text-xl font-bold mb-4 text-center'>ToDo List</h2>
+    <div className="w-full md:w-[450px] mt-10">
+      <h2 className="text-xl font-bold mb-4 text-center">ToDo List</h2>
       {todos.length > 0 ? (
-        <ul className='w-full flex flex-col gap-6'>
+        <ul className="w-full flex flex-col gap-6">
           {todos.map((todo) => (
             <ToDoItem key={todo.id} todo={todo} />
           ))}

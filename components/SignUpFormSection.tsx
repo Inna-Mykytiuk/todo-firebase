@@ -59,7 +59,7 @@ const SignUpFormSection = () => {
             onSubmit={handleSignUp}
             className="grid grid-cols-1 gap-2 w-[250px] min-w-fit items-center justify-center"
           >
-            <h1 className='text-xl font-bold mb-4 text-center'>Sign Up</h1>
+            <h1 className="text-xl font-bold mb-4 text-center">Sign Up</h1>
             <input
               ref={emailRef}
               type="email"
@@ -80,7 +80,10 @@ const SignUpFormSection = () => {
               autoComplete="off"
               className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-input focus:border-mainBcg focus:outline-none"
             />
-            <button type="submit" className="mx-auto mt-4 flex  justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor">
+            <button
+              type="submit"
+              className="mx-auto mt-4 flex  justify-center rounded bg-gradient px-4 py-2 font-bold text-white transition-all duration-300 ease-out hover:bg-mainColor"
+            >
               Sign Up
             </button>
             <p>
@@ -89,17 +92,17 @@ const SignUpFormSection = () => {
                 Log In
               </Link>
             </p>
-            {loading ? <div className="flex items-center justify-center h-full">
-              <SyncLoader
-                color="#9ea7fc"
-                size={25}
-              />
-            </div> : ""}
+            {loading ? (
+              <div className="flex items-center justify-center h-full">
+                <SyncLoader color="#9ea7fc" size={25} />
+              </div>
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </div>
     </section>
-
   );
 };
 

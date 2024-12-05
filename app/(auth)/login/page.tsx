@@ -1,11 +1,7 @@
 import LoginFormSection from "@/components/LoginFormSection";
 
-
 const Login = () => {
-
-  return (
-    <LoginFormSection />
-  );
+  return <LoginFormSection />;
 };
 
 export default Login;
