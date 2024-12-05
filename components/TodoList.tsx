@@ -1,52 +1,58 @@
-"use client";
+import ToDoList from "@/components/TodoList";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 
-import useAuth from "@/hooks/useAuth";
-import { collection, onSnapshot } from "firebase/firestore";
-import { useEffect, useState } from "react";
+describe("ToDoList component", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-import { db } from "../firebase/clientApp";
-import ToDoItem from "./ToDoItem";
+  it("renders the correct heading", () => {
+    render(<ToDoList />);
 
-type Todo = {
-  id: string;
-  title: string;
-  description: string;
-  timestamp: number;
-  completed: boolean;
-};
+    // Перевіряємо, що заголовок компоненту відображається
+    expect(screen.getByText(/ToDo List/i)).toBeInTheDocument();
+  });
 
-const ToDoList = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const auth = useAuth();
+  it("renders 'No tasks found' message when no todos are present", () => {
+    render(<ToDoList />);
 
-  useEffect(() => {
-    if (!auth?.uid) return;
-    const todosRef = collection(db, "users", auth?.uid, "todos");
-    const unsubscribe = onSnapshot(todosRef, (snapshot) => {
-      const todos: Todo[] = [];
-      snapshot.forEach((doc) => {
-        todos.push({ ...doc.data(), id: doc.id } as Todo);
-      });
-      setTodos(todos);
+    // Перевіряємо, що повідомлення про відсутність задач відображається
+    expect(screen.getByText(/no tasks found/i)).toBeInTheDocument();
+  });
+
+  it("renders an empty list of todos initially", () => {
+    render(<ToDoList />);
+
+    // Перевіряємо, що список задач не відображається при відсутності задач
+    expect(screen.queryByRole("list")).not.toBeInTheDocument();
+  });
+
+  it("renders a list of todos when provided", () => {
+    const todosMock = [
+      {
+        id: "1",
+        title: "Task 1",
+        description: "Description 1",
+        timestamp: 123,
+        completed: false,
+      },
+      {
+        id: "2",
+        title: "Task 2",
+        description: "Description 2",
+        timestamp: 456,
+        completed: true,
+      },
+    ];
+
+    // Мокаємо задачі та рендеримо компонент
+    render(<ToDoList />);
+
+    // Перевіряємо, що кожна задача відображається
+    todosMock.forEach((todo) => {
+      expect(screen.getByText(todo.title)).toBeInTheDocument();
+      expect(screen.getByText(todo.description)).toBeInTheDocument();
     });
-
-    return () => unsubscribe();
-  }, [auth?.uid]);
-
-  return (
-    <div className="mt-10 w-full md:w-[450px]">
-      <h2 className="mb-4 text-center text-xl font-bold">ToDo List</h2>
-      {todos.length > 0 ? (
-        <ul className="flex w-full flex-col gap-6">
-          {todos.map((todo) => (
-            <ToDoItem key={todo.id} todo={todo} />
-          ))}
-        </ul>
-      ) : (
-        <p>No tasks found</p>
-      )}
-    </div>
-  );
-};
-
-export default ToDoList;
+  });
+});
