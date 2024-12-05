@@ -34,7 +34,7 @@ const ToDoList = () => {
   }, [auth?.uid]);
 
   return (
-    <div className="mt-10 w-full md:w-[450px]">
+    <div className="mt-10 w-full md:w-[450px]  mb-[100px]">
       <h2 className="mb-4 text-center text-xl font-bold">ToDo List</h2>
       {todos.length > 0 ? (
         <ul className="flex w-full flex-col gap-6">
