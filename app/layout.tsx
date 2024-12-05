@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${sora.variable} antialiased text-mainColor`}
+        className={`${poppins.variable} ${sora.variable} text-mainColor antialiased`}
       >
         {children}
       </body>
