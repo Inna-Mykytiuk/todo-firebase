@@ -41,7 +41,7 @@ const InputField: React.FC<InputProps> = ({
           disabled={disabled}
           aria-label={ariaLabel}
           onBlur={(e) => handleBlur(e.target.value)}
-          className={`${className} ${error ? 'border-red-500' : ''}`}
+          className={`${className} ${error ? 'border-red-500 border-r-[6px] border-solid border-[1px]' : ''}`}
         />
       ) : (
         <input
@@ -51,7 +51,7 @@ const InputField: React.FC<InputProps> = ({
           disabled={disabled}
           aria-label={ariaLabel}
           onBlur={(e) => handleBlur(e.target.value)}
-          className={`${className} ${error ? 'border-red-500' : ''}`}
+          className={`${className} ${error ? 'border-red-500 border-r-[6px] border-solid border-[1px]' : ''}`}
         />
       )}
       {error && (

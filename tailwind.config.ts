@@ -46,25 +46,16 @@ const config: Config = {
         input: "0px 5px 15px -12px rgba(0, 0, 0, 0.5)",
         "custom-card": "0px 0px 10px 0px #d2d7e0",
       },
-      content: {
-        arrowUp: `url(/icons/arrowUp.svg)`,
-        arrowRightSm: `url(/icons/arrowRightSm.svg)`,
-        formImg1: `url(/images/logo/formImg1.webp)`,
-      },
+
       fontFamily: {
         roboto: ["var(--font-roboto)"],
-      },
-      fontSize: {
-        light: ["22px", "1.5"],
-        medium: ["28px", "1.5"],
-        lightLarge: ["32px", "1.5"],
-        large: ["44px", "1.5"],
-        extraLarge: ["86px", "1.5"],
       },
       colors: {
         mainColor: "#707090",
         unactive: "#b7bec7",
         mainBcg: "#888fdc",
+        sectionBcg: "#cad9f0",
+        warning: "#f87171",
       },
     },
   },
