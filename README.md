@@ -23,10 +23,10 @@ The application includes the following routes:
 - **Login Page (`/login`)**  
   Allows users to authenticate themselves. If not registered, they are redirected to the registration page.
 
-- **Registration Page (`/register`)**  
+- **Registration Page (`/signup`)**  
   Enables users to create a new account to access the application's features.
 
-- **Dashboard (`/dashboard`)**  
+- **Dashboard (`/todo-app`)**  
   Accessible only to authenticated users, this page displays the task management interface.
 
 ---
@@ -108,4 +108,4 @@ To run the application locally, follow these steps:
    - React-Toastify provides a simple way to show notifications in a React application, enhancing user experience with non-intrusive alerts for task actions such as creation, updates, or deletions.
    - Its flexible configuration options allow for easy customization of toast messages, making it ideal for notifying users about app events in real time.
 
-![preview](https://github.com/Inna-Mykytiuk/todo-firebase/blob/main/public/assets/presentation.jpg)
+![preview](https://github.com/Inna-Mykytiuk/todo-firebase/blob/main/public/presentaition.jpg)
