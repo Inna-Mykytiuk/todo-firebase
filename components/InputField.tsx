@@ -24,7 +24,7 @@ const InputField: React.FC<InputProps> = ({
   const handleBlur = (value: string) => {
     if (!value.trim()) {
       if (name === "description" || name === "title") {
-        setError("The name field must be filled in.");
+        setError("This field must be filled in.");
       }
     } else {
       setError(null);
@@ -41,7 +41,7 @@ const InputField: React.FC<InputProps> = ({
           disabled={disabled}
           aria-label={ariaLabel}
           onBlur={(e) => handleBlur(e.target.value)}
-          className={`${className} ${error ? "border-[1px] border-r-[6px] border-solid border-red-500" : ""}`}
+          className={`${className} ${error ? "border border-red-500" : ""}`}
         />
       ) : (
         <input
@@ -51,14 +51,12 @@ const InputField: React.FC<InputProps> = ({
           disabled={disabled}
           aria-label={ariaLabel}
           onBlur={(e) => handleBlur(e.target.value)}
-          className={`${className} ${error ? "border-[1px] border-r-[6px] border-solid border-red-500" : ""}`}
+          className={`${className} ${error ? "border border-red-500" : ""}`}
         />
       )}
       {error && (
         <p
-          className={`absolute ml-3 text-sm text-red-500 ${
-            isTextArea ? "top-[48px]" : "top-[26px]"
-          }`}
+          className={`absolute ml-3 text-sm text-red-500 ${isTextArea ? "top-[48px]" : "top-[26px]"}`}
         >
           {error}
         </p>
